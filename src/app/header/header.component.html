@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand">MEAN IFA</a>
+    
+    <!-- Links -->
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" (click)="onIndex()">Mes taches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="account">Mon compte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="onLogout()" style="cursor: pointer">Se déconnecter</a>
+      </li>
+    </ul>
+  </nav>

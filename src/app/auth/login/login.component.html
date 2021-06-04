@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+            <div id="formContent">
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <input type="text" formControlName="mail" placeholder="email" class="form-control">
+                  <input type="password" formControlName="pass" placeholder="password" class="form-control">
+                  <button type="submit" class="btn btn-primary">Se connecter</button>
+                </form>
+
+                <div *ngIf="boolAlert" class="alert alert-warning" role="alert">
+                    L'identifiant ou le mot de passe est invalide.
+                </div>
+                
+                <div id="formFooter">
+                  <a class="underlineHover" routerLink="/register">Inscription</a>
+                </div>
+                </div>
+</div>

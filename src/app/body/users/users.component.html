@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div id="formContent" class="col-4">
+            <h3>A faire</h3>
+            <form [formGroup]="signupForm">
+                <div id="newTask" class="row">
+                    <div class="col-5">
+                        <input type="text" formControlName="title" placeholder="Titre" class="form-control mt-2">
+                    </div>
+                    <div class="col-2 my-auto">
+                        <i (click)="addTask()" class="material-icons" style="cursor: pointer;">add</i>
+                    </div>
+                    <div class="col-5">
+                        <input type="text" formControlName="content" placeholder="Contenu" class="form-control mt-2">
+                    </div>
+                    <input type="text" formControlName="state" [ngModel]=0 [value]=0 style="display: none;">
+                </div>
+                    <div id="task" *ngFor="let task of this.userService.selectedUser.tasks">
+                        <div *ngIf="task.state == 0">
+                            <div *ngIf="boolEdit && task._id == taskId">
+                                <input type="text" formControlName="title" [(ngModel)]="task.title">
+                                <input type="text" formControlName="content" [(ngModel)]="task.content"> 
+                                <div class="row">
+                                    <div class="col-6 text-left" style="cursor: pointer;" (click)="editTask(task._id)">Ok</div>   
+                                    <div class="col-6 text-right" style="cursor: pointer;">Annuler</div>  
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="!boolEdit">
+                                <h3>{{task.title}}</h3>
+                                <h5>{{task.content}}</h5>
+                                <div class="col-3">
+                                    <!-- <i class="material-icons" style="cursor: pointer;" (click)="onReduceOne(task._id)">chevron_left</i> -->
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="boolEdit = true; taskId=task._id">edit</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="deleteTask(task._id)">delete</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="onAddOne(task._id)">chevron_right</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+        <div id="formContent" class="col-4">
+            <h3>En cours</h3>
+            <form [formGroup]="signupForm">
+
+                    <div id="task" *ngFor="let task of this.userService.selectedUser.tasks">
+                        <div *ngIf="task.state == 1">
+                            <div *ngIf="boolEdit && task._id == taskId">
+                                <input type="text" formControlName="title" [(ngModel)]="task.title">
+                                <input type="text" formControlName="content" [(ngModel)]="task.content"> 
+                                <div class="row">
+                                    <div class="col-6 text-left" style="cursor: pointer;" (click)="editTask(task._id)">Ok</div>   
+                                    <div class="col-6 text-right" style="cursor: pointer;">Annuler</div>  
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="!boolEdit">
+                                <h3>{{task.title}}</h3>
+                                <h5>{{task.content}}</h5>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="onReduceOne(task._id)">chevron_left</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="boolEdit = true; taskId=task._id">edit</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="deleteTask(task._id)">delete</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="onAddOne(task._id)">chevron_right</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+        <div id="formContent" class="col-4">
+            <h3>Terminé</h3>
+            <form [formGroup]="signupForm">
+
+                    <div id="task" *ngFor="let task of this.userService.selectedUser.tasks">
+                        <div *ngIf="task.state == 2">
+                            <div *ngIf="boolEdit && task._id == taskId">
+                                <input type="text" formControlName="title" [(ngModel)]="task.title">
+                                <input type="text" formControlName="content" [(ngModel)]="task.content"> 
+                                <div class="row">
+                                    <div class="col-6 text-left" style="cursor: pointer;" (click)="editTask(task._id)">Ok</div>   
+                                    <div class="col-6 text-right" style="cursor: pointer;">Annuler</div>  
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="!boolEdit">
+                                <h3>{{task.title}}</h3>
+                                <h5>{{task.content}}</h5>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="onReduceOne(task._id)">chevron_left</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="boolEdit = true; taskId=task._id">edit</i>
+                                </div>
+                                <div class="col-3">
+                                    <i class="material-icons" style="cursor: pointer;" (click)="deleteTask(task._id)">delete</i>
+                                </div>
+                                <div class="col-3">
+                                    <!-- <i class="material-icons" style="cursor: pointer;" (click)="onAddOne(task._id)">chevron_right</i> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

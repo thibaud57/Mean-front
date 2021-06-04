@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div id="formContent">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <input type="text" formControlName="name" placeholder="Nom" class="form-control mt-2">
+                <input type="email" formControlName="mail" placeholder="Email" class="form-control mt-2">
+                <input type="text" formControlName="pass" placeholder="Mot de passe" class="form-control mt-2">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" (click)="onDelete(this.userService.selectedUser)" class="btn btn-danger">Supprimer mon compte</button>
+            </form>
+        </div>
+    </div>
+</div>
